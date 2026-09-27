@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Amiri", "Cinzel", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+  --color-brand-red: #7c1c1e;
+  --color-brand-gold: #c5a059;
+  --color-brand-bg: #fcfaf7;
+  --color-brand-dark: #2d2a26;
+  --color-brand-border: #e5dcd0;
+  --color-brand-light: #f4e6d1;
+  --color-brand-gold-dark: #8c6723;
+}
+
+/* Image Crispness and Rendering Optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  content-visibility: auto;
+}
+
+.crisp-img {
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Print Styles for Perfect Full-Width Single-Page A4 Transcript */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 5mm 6mm;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #1a1816 !important;
+    font-size: 9.5pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Hide all buttons, navbars, and headers */
+  header, footer, .print\:hidden, #btn-return-search, #btn-print-transcript {
+    display: none !important;
+  }
+  
+  #root, #transcript-portal {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .printable-transcript {
+    border: 2.5px double #c5a059 !important;
+    border-radius: 4px !important;
+    padding: 10px 14px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Full-width 2-column tables grid in print */
+  .printable-transcript .grid,
+  .printable-transcript .print\:grid-cols-2 {
+    width: 100% !important;
+  }
+
+  .printable-transcript table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .printable-transcript table th, 
+  .printable-transcript table td {
+    padding: 3px 6px !important;
+    font-size: 8.5pt !important;
+    line-height: 1.25 !important;
+  }
+
+  .printable-transcript table th {
+    background-color: #7c1c1e !important;
+    color: #f4e6d1 !important;
+    font-weight: bold !important;
+  }
+
+  .printable-transcript h2 {
+    font-size: 12pt !important;
+    margin: 0 !important;
+  }
+
+  .printable-transcript h3 {
+    font-size: 9pt !important;
+  }
+
+  .printable-transcript h4 {
+    font-size: 8pt !important;
+  }
+
+  .printable-transcript img {
+    max-height: 52px !important;
+    width: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: contain !important;
+  }
+}
